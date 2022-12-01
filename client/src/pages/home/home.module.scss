@@ -1,0 +1,31 @@
+.homeContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.homeTitle{
+    width: 1024px;
+    font-size: 20px;
+}
+.homeDesc{
+    font-size: 16px;
+    color: rgba($color: #000000, $alpha: 0.7);
+    display: flex;
+    width: 1024px;
+    justify-content: flex-start;
+}
+.homeButton{
+    display: flex;
+    justify-content: flex-start;
+    width: 1024px;
+}
+.homeLove{
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    color: #079ae9;
+    border-color: #079ae9;
+    cursor: pointer;
+}

@@ -1,0 +1,49 @@
+.featured{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 1;
+  }
+  
+  .featuredItem{
+    position: relative;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    flex:1
+  }
+  
+  .featuredImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .featuredTitles{
+    position: absolute;
+    bottom: 140px;
+    left: 20px;
+    color: white;
+  }
+  .featuredTitle{
+    color: white;
+  }
+  .featuredTitl{
+    color: white;
+    display: flex;
+    top: 40px;
+    align-items: center;
+    right: -190px;
+    position: absolute;
+  }
+  .featuredTitle1{
+    color: white;
+    display: flex;
+    top: 10px;
+    align-items: center;
+    right: -150px;
+    position: absolute;
+  }
