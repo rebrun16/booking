@@ -1,7 +1,8 @@
-import axios from "axios"
 import { useContext, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
+
+import axios from "axios"
 import "./login.css"
 
 const Login = () => {
@@ -17,6 +18,7 @@ const Login = () => {
     const handleChange = (e) => {
         setCredentials(prev=>({...prev, [e.target.id]: e.target.value}))
     }
+    
     const handleClick = async e => {
         e.preventDefault()
         dispatch({type:"LOGIN_START"})

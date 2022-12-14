@@ -1,11 +1,13 @@
-import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useContext } from "react";
 import { useState } from "react"
 import { SearchContext } from "../../context/SearchContext";
-import axios from "axios";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 import "./reserve.css"
 
 const Reserve = ({setOpen, hotelId}) => {
@@ -14,11 +16,11 @@ const Reserve = ({setOpen, hotelId}) => {
   const {dates} = useContext(SearchContext);
 
   const getDatesInRange = (startDate,endDate) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
+    const start = new Date(startDate);
+    const end = new Date(endDate);
     const date = new Date(start.getTime());
 
-    const  dates = []
+    const  dates = [];
     while(data <= end) {
       dates.push(new Date(date).getTime());
       date.setDate(date.getDate() + 1);
@@ -27,7 +29,7 @@ const Reserve = ({setOpen, hotelId}) => {
     return dates;
   }
 
-  const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate)
+  const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some(date =>
@@ -47,7 +49,7 @@ const Reserve = ({setOpen, hotelId}) => {
       );
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const  handleClick = async () => {
     try{
@@ -56,18 +58,22 @@ const Reserve = ({setOpen, hotelId}) => {
         const res = axios.put(`/rooms/availability/${roomId}`, {
           dates:alldates
         });
-        return res.dataж
+        return res.data
       })
       );
       setOpen(false)
       navigate("/")
     }catch(err) {}
   };
+
   return (
     <div className="reserve">
       <div className="rContainer">
-        <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={() => setOpen(false)}
-      />
+        <FontAwesomeIcon 
+          icon={faCircleXmark} 
+          className="rClose" 
+          onClick={() => setOpen(false)}
+        />
       <span>Select your rooms:</span>
       {data.map(item => (
         <div className="rItem">
@@ -83,11 +89,11 @@ const Reserve = ({setOpen, hotelId}) => {
                 <div className="room">
                   <label>{roomNumber.number}</label>
                   <input 
-                  type="checkbox" 
-                  value={roomNumber._id} 
-                  onChange={handleSelect} 
-                  disabled={!isAvailable(roomNumber)}
-                />
+                    type="checkbox" 
+                    value={roomNumber._id} 
+                    onChange={handleSelect} 
+                    disabled={!isAvailable(roomNumber)}
+                  />
                 </div>
               ))}
             </div>
@@ -95,7 +101,6 @@ const Reserve = ({setOpen, hotelId}) => {
         </div>
         ))}
         <button className="rButton" onClick={handleClick}>Reserve now</button>
-
       </div>
     </div>
   )
